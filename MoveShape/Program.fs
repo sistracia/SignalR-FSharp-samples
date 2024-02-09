@@ -1,14 +1,7 @@
+open MoveShape.Hubs
 open Microsoft.AspNetCore.Builder
 open Microsoft.Extensions.Hosting
 open Microsoft.Extensions.DependencyInjection
-open Microsoft.AspNetCore.SignalR
-
-type ShapeHub() =
-    inherit Hub()
-
-    member this.MoveShape(x: int, y: int) =
-        this.Clients.Others.SendAsync("shapeMoved", x, y)
-
 
 [<EntryPoint>]
 let main args =
