@@ -6,4 +6,8 @@ type ChatHub() =
     inherit Hub()
 
     member this.Send(name: string, message: string) =
-        this.Clients.All.SendAsync("broadcastMessage", name, message)
+        task {
+            this.Clients.All.SendAsync("broadcastMessage", name, message)
+            |> Async.AwaitTask
+            |> ignore
+        }
