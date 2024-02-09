@@ -8,7 +8,7 @@ import * as signalR from "@microsoft/signalr";
 
 export function setupApp() {
   const connection = new signalR.HubConnectionBuilder()
-    .withUrl("http://localhost:5001/shapeHub")
+    .withUrl("http://localhost:5000/shapeHub")
     .build();
 
   const shape = document.getElementById("shape") as HTMLElement;
