@@ -1,14 +1,7 @@
+open ChatSample.Hubs
 open Microsoft.AspNetCore.Builder
 open Microsoft.Extensions.Hosting
 open Microsoft.Extensions.DependencyInjection
-open Microsoft.AspNetCore.SignalR
-
-type ChatHub() =
-    inherit Hub()
-
-    member this.Send(name: string, message: string) =
-        this.Clients.All.SendAsync("broadcastMessage", name, message)
-
 
 [<EntryPoint>]
 let main args =
