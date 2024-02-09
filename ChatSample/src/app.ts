@@ -18,7 +18,7 @@ export function setupApp() {
 
     // Start the connection.
     const connection = new signalR.HubConnectionBuilder()
-      .withUrl("http://localhost:5001/chat")
+      .withUrl("http://localhost:5000/chat")
       .build();
 
     // Create a function that the hub can call to broadcast messages.
