@@ -10,10 +10,13 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.ime
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
@@ -107,7 +110,15 @@ fun ChatList(
     messages: List<Message>, onSendMessage: (txt: String) -> Unit, modifier: Modifier = Modifier
 ) {
     Column(modifier = modifier.padding(all = 8.dp)) {
-        LazyColumn(modifier = Modifier.weight(1f)) {
+        LazyColumn(
+            modifier = Modifier
+                .weight(1f)
+                .padding(
+                    top = WindowInsets.ime
+                        .asPaddingValues()
+                        .calculateBottomPadding()
+                )
+        ) {
             items(messages) { message ->
                 Chat(message)
             }
@@ -148,23 +159,7 @@ fun ChatListPreview() {
 
 object SampleData {
     // Sample conversation data
-    val messagesSample = listOf(
-        Message(
-            "First Message"
-        ),
-        Message(
-            "Second Message"
-        ),
-        Message(
-            "Third Message"
-        ),
-        Message(
-            "Fourth Message"
-        ),
-        Message(
-            "Fifth Message"
-        ),
-    )
+    val messagesSample = List(1000) { Message("Message") }
 }
 
 data class Message(val body: String)
