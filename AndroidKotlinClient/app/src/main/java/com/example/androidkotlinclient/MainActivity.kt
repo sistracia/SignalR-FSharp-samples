@@ -1,6 +1,7 @@
 package com.example.androidkotlinclient
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.BorderStroke
@@ -27,6 +28,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -37,27 +39,32 @@ import androidx.compose.ui.unit.dp
 import com.example.androidkotlinclient.ui.theme.AndroidKotlinClientTheme
 import com.microsoft.signalr.HubConnection
 import com.microsoft.signalr.HubConnectionBuilder
-
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        var hubConnection: HubConnection = HubConnectionBuilder.create("YOUR URL HERE").build()
-
         setContent {
             AndroidKotlinClientTheme {
                 var messages by rememberSaveable {
-                    mutableStateOf<MutableList<Message>>(
-                        mutableListOf()
-                    )
+                    mutableStateOf<List<Message>>(emptyList())
                 }
 
+                val hubConnection = remember {
+                    HubConnectionBuilder.create("YOUR URL HERE").build()
+                }
+
+                // Connect to the hub when the composable is first composed
                 LaunchedEffect(Unit) {
+                    startSignalRConnection(hubConnection)
+                }
+
+                // Handle incoming messages
+                LaunchedEffect(hubConnection) {
                     hubConnection.on("Send", { message ->
-                        runOnUiThread {
-                            messages.add(Message(message))
-                        }
+                        messages += Message(message)
                     }, String::class.java)
                 }
 
@@ -161,3 +168,16 @@ object SampleData {
 }
 
 data class Message(val body: String)
+
+// Thanks to ChatGPT!
+private suspend fun startSignalRConnection(hubConnection: HubConnection) {
+    withContext(Dispatchers.IO) {
+        try {
+            hubConnection.start().blockingAwait()
+            // Connection established
+        } catch (e: Exception) {
+            // Handle connection error
+            Log.println(Log.DEBUG, "startSignalRConnection.catch", e.message.toString())
+        }
+    }
+}
