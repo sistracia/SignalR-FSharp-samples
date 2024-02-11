@@ -31,7 +31,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -49,27 +48,23 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        val hubConnection = HubConnectionBuilder.create("YOUR HUB URL").build()
+
         setContent {
             AndroidKotlinClientTheme {
                 var messages by rememberSaveable {
                     mutableStateOf<List<Message>>(emptyList())
                 }
 
-                val hubConnection = remember {
-                    HubConnectionBuilder.create("YOUR URL HERE").build()
-                }
 
                 // Connect to the hub when the composable is first composed
                 LaunchedEffect(Unit) {
                     startSignalRConnection(hubConnection)
-                }
-
-                // Handle incoming messages
-                LaunchedEffect(hubConnection) {
                     hubConnection.on("Send", { message ->
                         messages += Message(message)
                     }, String::class.java)
                 }
+
 
                 // A surface container using the 'background' color from the theme
                 Surface(
