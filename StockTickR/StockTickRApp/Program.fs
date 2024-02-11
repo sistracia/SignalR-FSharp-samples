@@ -1,6 +1,5 @@
 open StockTickR
 open StockTickR.Hubs
-open System
 open Microsoft.AspNetCore.Builder
 open Microsoft.Extensions.Hosting
 open Microsoft.Extensions.DependencyInjection
@@ -12,7 +11,22 @@ let main args =
     builder.Services.AddSignalR().AddMessagePackProtocol() |> ignore
     builder.Services.AddSingleton<StockTicker>() |> ignore
 
+    builder.Services.AddCors(fun options ->
+        options.AddPolicy(
+            "CorsPolicy",
+            fun builder ->
+                builder
+                    .WithOrigins("http://localhost:5000")
+                    .AllowAnyHeader()
+                    .WithMethods("GET", "POST")
+                    .AllowCredentials()
+                |> ignore
+        ))
+    |> ignore
+
     let app = builder.Build()
+
+    app.UseCors("CorsPolicy") |> ignore
     app.UseFileServer() |> ignore
     app.UseRouting() |> ignore
 
