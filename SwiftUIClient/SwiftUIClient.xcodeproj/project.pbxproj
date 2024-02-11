@@ -1,0 +1,414 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EE89ADA92B77853900DE5ED9 /* SwiftUIClientApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89ADA82B77853900DE5ED9 /* SwiftUIClientApp.swift */; };
+		EE89ADAB2B77853900DE5ED9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89ADAA2B77853900DE5ED9 /* ContentView.swift */; };
+		EE89ADAD2B77853A00DE5ED9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE89ADAC2B77853A00DE5ED9 /* Assets.xcassets */; };
+		EE89ADB02B77853A00DE5ED9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE89ADAF2B77853A00DE5ED9 /* Preview Assets.xcassets */; };
+		EE89ADB82B77B0DC00DE5ED9 /* SignalRClient in Frameworks */ = {isa = PBXBuildFile; productRef = EE89ADB72B77B0DC00DE5ED9 /* SignalRClient */; };
+		EE89ADBC2B77B13600DE5ED9 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89ADBB2B77B13600DE5ED9 /* Message.swift */; };
+		EE89ADBE2B77B1B600DE5ED9 /* SignalRService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89ADBD2B77B1B600DE5ED9 /* SignalRService.swift */; };
+		EEBB26222B78A1450067E46C /* ChatList.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBB26212B78A1450067E46C /* ChatList.swift */; };
+		EEBB26242B78A15D0067E46C /* ChatRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBB26232B78A15D0067E46C /* ChatRow.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		EE89ADA52B77853900DE5ED9 /* SwiftUIClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUIClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE89ADA82B77853900DE5ED9 /* SwiftUIClientApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIClientApp.swift; sourceTree = "<group>"; };
+		EE89ADAA2B77853900DE5ED9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		EE89ADAC2B77853A00DE5ED9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EE89ADAF2B77853A00DE5ED9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		EE89ADBB2B77B13600DE5ED9 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		EE89ADBD2B77B1B600DE5ED9 /* SignalRService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignalRService.swift; sourceTree = "<group>"; };
+		EEBB26212B78A1450067E46C /* ChatList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatList.swift; sourceTree = "<group>"; };
+		EEBB26232B78A15D0067E46C /* ChatRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRow.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EE89ADA22B77853900DE5ED9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EE89ADB82B77B0DC00DE5ED9 /* SignalRClient in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EE89AD9C2B77853900DE5ED9 = {
+			isa = PBXGroup;
+			children = (
+				EE89ADA72B77853900DE5ED9 /* SwiftUIClient */,
+				EE89ADA62B77853900DE5ED9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EE89ADA62B77853900DE5ED9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EE89ADA52B77853900DE5ED9 /* SwiftUIClient.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EE89ADA72B77853900DE5ED9 /* SwiftUIClient */ = {
+			isa = PBXGroup;
+			children = (
+				EE89ADB92B77B10F00DE5ED9 /* Models */,
+				EE89ADBA2B77B11400DE5ED9 /* Views */,
+				EE89ADA82B77853900DE5ED9 /* SwiftUIClientApp.swift */,
+				EE89ADAC2B77853A00DE5ED9 /* Assets.xcassets */,
+				EE89ADAE2B77853A00DE5ED9 /* Preview Content */,
+			);
+			path = SwiftUIClient;
+			sourceTree = "<group>";
+		};
+		EE89ADAE2B77853A00DE5ED9 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				EE89ADAF2B77853A00DE5ED9 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		EE89ADB92B77B10F00DE5ED9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				EE89ADBB2B77B13600DE5ED9 /* Message.swift */,
+				EE89ADBD2B77B1B600DE5ED9 /* SignalRService.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		EE89ADBA2B77B11400DE5ED9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EEBB26252B78AB820067E46C /* Chats */,
+				EE89ADAA2B77853900DE5ED9 /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		EEBB26252B78AB820067E46C /* Chats */ = {
+			isa = PBXGroup;
+			children = (
+				EEBB26232B78A15D0067E46C /* ChatRow.swift */,
+				EEBB26212B78A1450067E46C /* ChatList.swift */,
+			);
+			path = Chats;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EE89ADA42B77853900DE5ED9 /* SwiftUIClient */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EE89ADB32B77853A00DE5ED9 /* Build configuration list for PBXNativeTarget "SwiftUIClient" */;
+			buildPhases = (
+				EE89ADA12B77853900DE5ED9 /* Sources */,
+				EE89ADA22B77853900DE5ED9 /* Frameworks */,
+				EE89ADA32B77853900DE5ED9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SwiftUIClient;
+			packageProductDependencies = (
+				EE89ADB72B77B0DC00DE5ED9 /* SignalRClient */,
+			);
+			productName = SwiftUIClient;
+			productReference = EE89ADA52B77853900DE5ED9 /* SwiftUIClient.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EE89AD9D2B77853900DE5ED9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1520;
+				LastUpgradeCheck = 1520;
+				TargetAttributes = {
+					EE89ADA42B77853900DE5ED9 = {
+						CreatedOnToolsVersion = 15.2;
+					};
+				};
+			};
+			buildConfigurationList = EE89ADA02B77853900DE5ED9 /* Build configuration list for PBXProject "SwiftUIClient" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EE89AD9C2B77853900DE5ED9;
+			packageReferences = (
+				EE89ADB62B77B0DC00DE5ED9 /* XCRemoteSwiftPackageReference "SignalR-Client-Swift" */,
+			);
+			productRefGroup = EE89ADA62B77853900DE5ED9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EE89ADA42B77853900DE5ED9 /* SwiftUIClient */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EE89ADA32B77853900DE5ED9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EE89ADB02B77853A00DE5ED9 /* Preview Assets.xcassets in Resources */,
+				EE89ADAD2B77853A00DE5ED9 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EE89ADA12B77853900DE5ED9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EEBB26222B78A1450067E46C /* ChatList.swift in Sources */,
+				EE89ADBE2B77B1B600DE5ED9 /* SignalRService.swift in Sources */,
+				EE89ADBC2B77B13600DE5ED9 /* Message.swift in Sources */,
+				EE89ADAB2B77853900DE5ED9 /* ContentView.swift in Sources */,
+				EEBB26242B78A15D0067E46C /* ChatRow.swift in Sources */,
+				EE89ADA92B77853900DE5ED9 /* SwiftUIClientApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		EE89ADB12B77853A00DE5ED9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		EE89ADB22B77853A00DE5ED9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EE89ADB42B77853A00DE5ED9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"SwiftUIClient/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.sistracia.SwiftUIClient;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EE89ADB52B77853A00DE5ED9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"SwiftUIClient/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.sistracia.SwiftUIClient;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EE89ADA02B77853900DE5ED9 /* Build configuration list for PBXProject "SwiftUIClient" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EE89ADB12B77853A00DE5ED9 /* Debug */,
+				EE89ADB22B77853A00DE5ED9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EE89ADB32B77853A00DE5ED9 /* Build configuration list for PBXNativeTarget "SwiftUIClient" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EE89ADB42B77853A00DE5ED9 /* Debug */,
+				EE89ADB52B77853A00DE5ED9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		EE89ADB62B77B0DC00DE5ED9 /* XCRemoteSwiftPackageReference "SignalR-Client-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/moozzyk/SignalR-Client-Swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		EE89ADB72B77B0DC00DE5ED9 /* SignalRClient */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EE89ADB62B77B0DC00DE5ED9 /* XCRemoteSwiftPackageReference "SignalR-Client-Swift" */;
+			productName = SignalRClient;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = EE89AD9D2B77853900DE5ED9 /* Project object */;
+}
