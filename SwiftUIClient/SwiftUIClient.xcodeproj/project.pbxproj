@@ -13,7 +13,6 @@
 		EE89ADB02B77853A00DE5ED9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE89ADAF2B77853A00DE5ED9 /* Preview Assets.xcassets */; };
 		EE89ADB82B77B0DC00DE5ED9 /* SignalRClient in Frameworks */ = {isa = PBXBuildFile; productRef = EE89ADB72B77B0DC00DE5ED9 /* SignalRClient */; };
 		EE89ADBC2B77B13600DE5ED9 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89ADBB2B77B13600DE5ED9 /* Message.swift */; };
-		EE89ADBE2B77B1B600DE5ED9 /* SignalRService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89ADBD2B77B1B600DE5ED9 /* SignalRService.swift */; };
 		EEBB26222B78A1450067E46C /* ChatList.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBB26212B78A1450067E46C /* ChatList.swift */; };
 		EEBB26242B78A15D0067E46C /* ChatRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBB26232B78A15D0067E46C /* ChatRow.swift */; };
 /* End PBXBuildFile section */
@@ -25,7 +24,6 @@
 		EE89ADAC2B77853A00DE5ED9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EE89ADAF2B77853A00DE5ED9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		EE89ADBB2B77B13600DE5ED9 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
-		EE89ADBD2B77B1B600DE5ED9 /* SignalRService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignalRService.swift; sourceTree = "<group>"; };
 		EEBB26212B78A1450067E46C /* ChatList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatList.swift; sourceTree = "<group>"; };
 		EEBB26232B78A15D0067E46C /* ChatRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -82,7 +80,6 @@
 			isa = PBXGroup;
 			children = (
 				EE89ADBB2B77B13600DE5ED9 /* Message.swift */,
-				EE89ADBD2B77B1B600DE5ED9 /* SignalRService.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -182,7 +179,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				EEBB26222B78A1450067E46C /* ChatList.swift in Sources */,
-				EE89ADBE2B77B1B600DE5ED9 /* SignalRService.swift in Sources */,
 				EE89ADBC2B77B13600DE5ED9 /* Message.swift in Sources */,
 				EE89ADAB2B77853900DE5ED9 /* ContentView.swift in Sources */,
 				EEBB26242B78A15D0067E46C /* ChatRow.swift in Sources */,
