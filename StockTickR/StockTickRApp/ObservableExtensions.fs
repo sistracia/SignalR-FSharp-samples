@@ -6,7 +6,7 @@ open System.Runtime.CompilerServices
 
 type ObservableExtensions =
     [<Extension>]
-    static member AsChannelReader<'T>(observable: IObservable<'T>, ?maxBufferSize0: int) =
+    static member AsChannelReader<'T> (observable: IObservable<'T>) (maxBufferSize0: int option) =
         // This sample shows adapting an observable to a ChannelReader without
         // back pressure, if the connection is slower than the producer, memory will
         // start to increase.
@@ -22,8 +22,7 @@ type ObservableExtensions =
             | None -> Channel.CreateUnbounded<'T>()
 
 
-        let onNext value =
-            channel.Writer.TryWrite(value) |> ignore
+        let onNext value = channel.Writer.TryWrite value |> ignore
 
         let onError ex = printfn "Error occurred:"
 
@@ -31,7 +30,9 @@ type ObservableExtensions =
 
         let disposable = observable.Subscribe(onNext, onError, onCompleted)
 
+        let dispose _ = disposable.Dispose()
+
         // Complete the subscription on the reader completing
-        channel.Reader.Completion.ContinueWith(fun _ -> disposable.Dispose()) |> ignore
+        channel.Reader.Completion.ContinueWith dispose |> ignore
 
         channel.Reader

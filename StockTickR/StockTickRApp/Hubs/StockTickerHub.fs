@@ -10,38 +10,37 @@ type StockTickerHub(stockTicker: StockTicker) =
     member this.GetAllStocks() = _stockTicker.GetAllStocks()
 
     member this.StreamStocks() =
-        Extentions.ObservableExtensions.AsChannelReader(_stockTicker.StreamStocks(), 10)
-
+        Extentions.ObservableExtensions.AsChannelReader (_stockTicker.StreamStocks()) (Some 10)
 
     member this.GetMarketState() = _stockTicker.MarketState.ToString()
 
     member this.OpenMarket() =
         async {
-            _stockTicker.OpenMarket()
-            |> Async.RunSynchronously
-            |> this.BroadcastMarketStateChange
-            |> ignore
+            let! marketState = _stockTicker.OpenMarket()
+            do! this.BroadcastMarketStateChange marketState
         }
 
     member this.CloseMarket() =
-        async { _stockTicker.CloseMarket() |> ignore }
-
+        async {
+            let! marketState = _stockTicker.CloseMarket()
+            do! this.BroadcastMarketStateChange marketState
+        }
 
     member this.Reset() =
         async {
-            (_stockTicker.Reset()) |> Async.RunSynchronously |> ignore
-            this.BroadcastMarketReset() |> Async.RunSynchronously |> ignore
+            do! (_stockTicker.Reset())
+            do! this.BroadcastMarketReset()
         }
 
     member private this.BroadcastMarketStateChange(marketState: MarketState) =
         async {
-            match marketState with
-            | MarketState.Open -> this.Clients.All.SendAsync("marketOpened")
-            | MarketState.Closed -> this.Clients.All.SendAsync("marketClosed")
-            | _ -> this.Clients.Caller.SendAsync("unknown")
-            |> Async.AwaitTask
-            |> ignore
+            do!
+                (match marketState with
+                 | MarketState.Open -> this.Clients.All.SendAsync("marketOpened")
+                 | MarketState.Closed -> this.Clients.All.SendAsync("marketClosed")
+                 | _ -> this.Clients.Caller.SendAsync("unknown")
+                 |> Async.AwaitTask)
         }
 
     member private this.BroadcastMarketReset() =
-        async { this.Clients.All.SendAsync("marketReset") |> Async.AwaitTask |> ignore }
+        async { do! (this.Clients.All.SendAsync("marketReset") |> Async.AwaitTask) }

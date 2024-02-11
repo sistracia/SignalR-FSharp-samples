@@ -25,7 +25,7 @@ type StockTicker() as self =
     // Stock can go up or down by a percentage of this factor on each change
     let _rangePercent: double = 0.002
 
-    let _updateInterval: TimeSpan = TimeSpan.FromMilliseconds(250)
+    let _updateInterval: TimeSpan = TimeSpan.FromMilliseconds 250
     let _updateOrNotRandom: Random = new Random()
 
     let mutable _timer: Timer option = None
@@ -36,7 +36,7 @@ type StockTicker() as self =
     [<VolatileField>]
     let mutable _marketState: MarketState = MarketState.Closed
 
-    do self.LoadDefaultStocks() |> ignore
+    do self.LoadDefaultStocks()
 
     member this.MarketState
         with get () = _marketState
@@ -44,20 +44,19 @@ type StockTicker() as self =
 
     member this.GetAllStocks() = _stocks.Values
 
-    member this.StreamStocks() = _subject.AsObservable()
+    member this.StreamStocks() : IObservable<Stock> = _subject
 
     member this.OpenMarket() =
         async {
-            _marketStateLock.WaitAsync() |> Async.AwaitTask |> ignore
+            do! _marketStateLock.WaitAsync() |> Async.AwaitTask
 
             try
                 if this.MarketState <> MarketState.Open then
-                    let timerCallback = fun _ -> this.UpdateStockPrices |> ignore
+                    let timerCallback = fun _ -> this.UpdateStockPrices() |> Async.Start |> ignore
                     _timer <- Some(new Timer(timerCallback, null, _updateInterval, _updateInterval))
 
                     this.MarketState <- MarketState.Open
             finally
-                this.MarketState <- MarketState.Unknown
                 _marketStateLock.Release() |> ignore
 
             return this.MarketState
@@ -65,7 +64,7 @@ type StockTicker() as self =
 
     member this.CloseMarket() =
         async {
-            _marketStateLock.WaitAsync() |> Async.AwaitTask |> ignore
+            do! _marketStateLock.WaitAsync() |> Async.AwaitTask
 
             try
                 if this.MarketState = MarketState.Open then
@@ -75,7 +74,6 @@ type StockTicker() as self =
 
                     this.MarketState <- MarketState.Closed
             finally
-                this.MarketState <- MarketState.Unknown
                 _marketStateLock.Release() |> ignore
 
             return this.MarketState
@@ -83,11 +81,11 @@ type StockTicker() as self =
 
     member this.Reset() =
         async {
-            _marketStateLock.WaitAsync() |> Async.AwaitTask |> ignore
+            do! _marketStateLock.WaitAsync() |> Async.AwaitTask
 
             try
                 if this.MarketState <> MarketState.Closed then
-                    raise (InvalidOperationException("Market must be closed before it can be reset."))
+                    raise (InvalidOperationException "Market must be closed before it can be reset.")
 
                 this.LoadDefaultStocks() |> ignore
             finally
@@ -95,32 +93,35 @@ type StockTicker() as self =
         }
 
     member this.LoadDefaultStocks() =
-        async {
-            _stocks.Clear()
+        _stocks.Clear()
 
-            let stocks =
-                [ new Stock(Symbol = "MSFT", Price = 107.56m)
-                  new Stock(Symbol = "AAPL", Price = 215.49m)
-                  new Stock(Symbol = "GOOG", Price = 1221.16m) ]
+        let stocks =
+            [ new Stock(Symbol = "MSFT", Price = 107.56m)
+              new Stock(Symbol = "AAPL", Price = 215.49m)
+              new Stock(Symbol = "GOOG", Price = 1221.16m) ]
 
-            stocks |> List.iter (fun stock -> _stocks.TryAdd(stock.Symbol, stock) |> ignore)
-        }
+        let stockIter (stock: Stock) =
+            _stocks.TryAdd(stock.Symbol, stock) |> ignore
+
+        stocks |> List.iter stockIter
+
 
     member this.UpdateStockPrices() =
         async {
             // This function must be re-entrant as it's running as a timer interval handler
-            _updateStockPricesLock.WaitAsync() |> Async.AwaitTask |> ignore
+            do! _updateStockPricesLock.WaitAsync() |> Async.AwaitTask
 
             try
                 if not _updatingStockPrices then
                     _updatingStockPrices <- true
 
-                _stocks.Values
-                |> Seq.iter (fun stock ->
-                    this.TryUpdateStockPrice(stock)
-                    _subject.OnNext(stock))
+                    let stockIter stock =
+                        this.TryUpdateStockPrice stock
+                        _subject.OnNext stock
 
-                _updatingStockPrices <- false
+                    _stocks.Values |> Seq.iter stockIter
+
+                    _updatingStockPrices <- false
             finally
                 _updateStockPricesLock.Release() |> ignore
         }
@@ -132,10 +133,10 @@ type StockTicker() as self =
         if r > 0.1 then
             ()
 
-        let random = new Random(int (Math.Floor(stock.Price)))
+        let random = new Random(int (Math.Floor stock.Price))
         let percentChange = random.NextDouble() * _rangePercent
         let pos = random.NextDouble() > 0.51
         let change = Math.Round(stock.Price * decimal (percentChange), 2)
-        let foo = if pos then change else -change
+        let _change = if pos then change else -change
 
-        stock.Price <- stock.Price + change
+        stock.Price <- stock.Price + _change
