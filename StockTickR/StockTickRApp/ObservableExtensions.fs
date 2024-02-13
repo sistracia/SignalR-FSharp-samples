@@ -1,12 +1,13 @@
-module Extentions
+module Extensions
 
 open System
 open System.Threading.Channels
 open System.Runtime.CompilerServices
 
+[<Extension>]
 type ObservableExtensions =
     [<Extension>]
-    static member AsChannelReader<'T> (observable: IObservable<'T>) (maxBufferSize0: int option) =
+    static member inline AsChannelReader<'T> (observable: IObservable<'T>, ?maxBufferSize0: int) =
         // This sample shows adapting an observable to a ChannelReader without
         // back pressure, if the connection is slower than the producer, memory will
         // start to increase.

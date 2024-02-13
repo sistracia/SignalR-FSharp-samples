@@ -2,6 +2,7 @@ namespace StockTickR.Hubs
 
 open StockTickR
 open Microsoft.AspNetCore.SignalR
+open Extensions
 
 type StockTickerHub(stockTicker: StockTicker) =
     inherit Hub()
@@ -10,7 +11,7 @@ type StockTickerHub(stockTicker: StockTicker) =
     member this.GetAllStocks() = _stockTicker.GetAllStocks()
 
     member this.StreamStocks() =
-        Extentions.ObservableExtensions.AsChannelReader (_stockTicker.StreamStocks()) (Some 10)
+        _stockTicker.StreamStocks().AsChannelReader(10)
 
     member this.GetMarketState() = _stockTicker.MarketState.ToString()
 
